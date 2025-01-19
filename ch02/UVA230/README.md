@@ -1,5 +1,7 @@
 # UVA 230
 
+[Link to the problem](https://vjudge.net/problem/UVA-230)
+
 ## What the problem asks us to do
 
 1. Read the books available on the shelves.
@@ -14,5 +16,5 @@
 - String manipulation
     - string substr method
     - string find method
-- Since the `set` data structure in STL C++ has a Red Black Tree (Blanced Binary Search Tree) all the keys that are inserted into the set are going to be sorted.
-- If we save a `pair` data structure inside a `set` the set is going to sort the data by the first element in the pair, and in case the first element is equal then it is going to be sorted using the second element, which matches perfectly or constraint to sort it by author and then by title.
+- Since the `set` data structure in STL C++ has a Red Black Tree (Blanced Binary Search Tree) behind its implementation, all the keys that are inserted into the set are going to be sorted.
+- If we save a `pair` data structure inside a `set` the set is going to sort the data by the first element in the pair, and in case the first element is equal then it is going to be sorted using the second element, which matches perfectly the constraint of sorting the books by author and then by title.
