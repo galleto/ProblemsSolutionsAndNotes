@@ -4,21 +4,17 @@ using namespace std;
 
 bool lock_combination(const vector<int>& combinaciones, size_t index, int acumulado) {
     if (index == combinaciones.size()) {
-        // Check if the total rotation is a multiple of 360
         return (acumulado % 360 == 0);
     }
 
-    // Try adding the current angle (clockwise rotation)
     if (lock_combination(combinaciones, index + 1, acumulado + combinaciones[index])) {
         return true;
     }
 
-    // Try subtracting the current angle (counterclockwise rotation)
     if (lock_combination(combinaciones, index + 1, acumulado - combinaciones[index])) {
         return true;
     }
 
-    // If neither works, return false
     return false;
 }
 
