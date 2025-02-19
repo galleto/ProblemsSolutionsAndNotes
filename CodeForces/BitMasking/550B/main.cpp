@@ -3,28 +3,29 @@
 
 using namespace std;
 
-int numberOfWays(const vector<int>& difficulties, int* l, int* r, int* x) {
+int numberOfWays(vector<int>& difficulties, int* l, int* r, int* x) {
     size_t n = difficulties.size();
     int possible_solutions = 0;
+    sort(difficulties.begin(), difficulties.end());
 
     for(int mask = 0; mask < (1 << n); mask++) {
-        if(mask & (mask-1)) continue;
+        if(!(mask && (mask & (mask-1)))) continue;
 
         vector<int> solution;
         int sum = 0;
 
         for(int i=0; i<n; i++) {
             if(mask & (1 << i)) {
+                sum += difficulties[i];
                 solution.push_back(difficulties[i]);
             }
         }
 
-
         if( sum >= *l && 
             sum <= *r &&
-            (abs(solution[0] - solution[solution.size() - 1])) >= *x
+            (solution[solution.size() - 1] - solution[0]) >= *x
         ) {
-            possible_solutions++;
+            possible_solutions+=1;
         }
     }
 
@@ -43,8 +44,6 @@ int main() {
 
         difficulties[i] = input;
     }
-
-    sort(difficulties.begin(), difficulties.end());
 
     int result = numberOfWays(difficulties, &l, &r, &x);
     printf("%d", result);
